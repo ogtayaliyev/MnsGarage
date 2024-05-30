@@ -3,11 +3,23 @@ name: Construction d'un projet
 on:
   push:
     branches: ["master"]
+  workflow_dispatch:
 
 
 jobs:
+  create-folder:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using pkey
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: whoami
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
