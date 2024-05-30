@@ -11,7 +11,7 @@ jobs:
     name: create-folder
     runs-on: ubuntu-latest
     steps:
-      - name: executing remote ssh commands using pkey
+      - name: executing remote ssh commands using key
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
@@ -39,3 +39,13 @@ jobs:
     - name: Build with Maven
       run: mvn -Dmaven.test.skip=true -B package --file pom.xml
 
+    - name: Rename jar
+      run: mv target/*.jar target/mnsgarage.jar
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          source: "tests/a.txt,tests/b.txt"
+          target:

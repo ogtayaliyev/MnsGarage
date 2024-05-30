@@ -40,5 +40,15 @@ services:
     ports:
       - "8080:8080"
 
+  frontend:
+    image: mnsgarage-frontend:tag
+    container_name: mnsgarage_frontend
+    build:
+      context: ./path/to/frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - app
+    ports:
+      - "3000:80"
 volumes:
   dbdata:
