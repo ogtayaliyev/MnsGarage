@@ -6,7 +6,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: apirest
-
+      MYSQL_USER: your-username
+      MYSQL_PASSWORD: your-password
     ports:
       - "3308:3306"
     volumes:
@@ -23,6 +24,21 @@ services:
       - "8181:80"
     depends_on:
       - db
+
+  app:
+    image: mnsgarage
+    container_name: mnsgarage_backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/apirest
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8080:8080"
 
 volumes:
   dbdata:
