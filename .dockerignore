@@ -1,0 +1,5 @@
+## ignore ALL
+#*
+#
+## .dockerignore
+!target/*.jar
