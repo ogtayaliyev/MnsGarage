@@ -8,7 +8,7 @@ on:
 
 jobs:
   create-folder:
-    name: Build
+    name: create-folder
     runs-on: ubuntu-latest
     steps:
       - name: executing remote ssh commands using pkey
@@ -16,7 +16,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PRIVATE_KEY }}
+          key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
           script: whoami
   build:
