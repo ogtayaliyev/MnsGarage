@@ -82,7 +82,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest, ${{ secrets.DOCKERHUB_USERNAME }}/mnsgarage:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mnsgarage:latest
 
       - name: Envoyer l'image Docker vers le registre
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/mnsgarage:latest
