@@ -15,7 +15,7 @@ jobs:
         with:
           host: ${{ secrets.HOST_LOCAL }}
           username: ${{ secrets.USERNAME }}
-#          key: ${{ secrets.PRIVATE_KEY }}
+          key: ${{ secrets.PRIVATE_KEY }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: mkdir -p /opt/applications/sa
@@ -43,7 +43,7 @@ jobs:
         with:
           host: ${{ secrets.HOST_LOCAL }}
           username: ${{ secrets.USERNAME }}
-#          key: ${{ secrets.PRIVATE_KEY }}
+          key: ${{ secrets.PRIVATE_KEY }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           source: "target/mnsgarage.jar"
@@ -60,7 +60,7 @@ jobs:
         with:
           host: ${{ secrets.HOST_LOCAL }}
           username: ${{ secrets.USERNAME }}
-#          key: ${{ secrets.PRIVATE_KEY }}
+          key: ${{ secrets.PRIVATE_KEY }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
