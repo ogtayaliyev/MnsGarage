@@ -10,10 +10,10 @@ jobs:
     name: create-folder
     runs-on: ubuntu-latest
     steps:
-      - name: executing remote ssh commands using key
+      - name: Create folder on remove VM
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.HOST_LOCAL }}
+          host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
@@ -34,12 +34,14 @@ jobs:
 
       - name: Build with Maven
         run: mvn -Dmaven.test.skip=true -B package --file pom.xml
+
       - name: Rename jar
         run: mv target/*.jar target/mnsgarage.jar
+
       - name: copy file via ssh key
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.HOST_LOCAL }}
+          host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
@@ -55,7 +57,7 @@ jobs:
       - name: Run jar on serveur
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.HOST_LOCAL }}
+          host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
