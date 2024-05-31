@@ -73,11 +73,11 @@ jobs:
 
       # Construction de l'image Docker
       - name: Build de l'image Docker
-        run: docker build -t USER/mnsgarage:latest .
+        run: docker build -t mnsgarage:latest .
 
       # Pousser l'image Docker vers Docker Hub
       - name: Pousser l'image Docker vers Docker Hub
-        run: docker push USER/mnsgarage:latest
+        run: docker push mnsgarage:latest
 
       # Connexion au serveur distant et déploiement de l'image Docker
       - name: Déployer l'image Docker sur le serveur distant
@@ -89,4 +89,4 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             docker pull USER/mnsgarage:latest
-            docker run -d --name mnsgarage -p 8080:8080 user/mnsgarage:latest
+            docker run -d --name mnsgarage -p 8080:8080 mnsgarage:latest
