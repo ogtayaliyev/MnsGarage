@@ -1,5 +1,5 @@
 # First stage: Build the application
-FROM maven:3.8.4-eclipse-temurin-21 as build
+FROM maven:eclipse-temurin:21-jdk-alpine as build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
