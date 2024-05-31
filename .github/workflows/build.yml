@@ -77,7 +77,6 @@ jobs:
 
       # Pousser l'image Docker vers Docker Hub
       - name: Pousser l'image Docker vers Docker Hub
-        run: docker push mnsgarage:latest
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
