@@ -6,8 +6,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: apirest
-      MYSQL_USER: your-username
-      MYSQL_PASSWORD: your-password
+
     ports:
       - "3308:3306"
     volumes:
