@@ -30,8 +30,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    depends_on:
-      - db
+#    depends_on:
+#      - db
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/apirest
       SPRING_DATASOURCE_USERNAME: root
