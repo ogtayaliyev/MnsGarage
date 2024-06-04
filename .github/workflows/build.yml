@@ -36,6 +36,18 @@ jobs:
       - name: Renommer le fichier JAR
         run: mv target/*.jar target/mnsgarage.jar
 
+      # OR (Option 2)
+      - name: Ajouter les propriétés JDBC au JAR (Option 2)
+        # Option 2: Use a separate configuration file
+        run: |
+          cat << EOF >> src/main/resources/application.properties
+          # JDBC properties for MySQL database
+          spring.datasource.url=jdbc:mysql://localhost:3306/apirest
+          spring.datasource.username=root
+          spring.datasource.password=root
+          EOF
+          # Replace placeholders with actual values
+
   run-jar:
     name: Exécution du JAR
     runs-on: ubuntu-latest
@@ -51,6 +63,7 @@ jobs:
           script: |
             cp /opt/app/garage/ms-garage/mnsgarage.jar /opt/app/garage/ms-garage
             java -jar /opt/app/garage/ms-garage/mnsgarage.jar
+          
           
 
           #name: Construction d'un projet
